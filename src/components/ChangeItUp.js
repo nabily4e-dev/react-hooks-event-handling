@@ -10,7 +10,8 @@ function ChangeItUp() {
       <input
         type="text"
         name="search"
-        onChange={handleChange}
+        // onChange={handleChange}
+        onChange={(event) => console.log(`${event.target.name}: ${event.target.value}`)}
         placeholder="Enter search term..."
       />
 
