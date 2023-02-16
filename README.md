@@ -16,11 +16,11 @@ Consider the following component:
 
 ```jsx
 function Tickler() {
-  function tickle() {
-    console.log("Teehee!");
-  }
+    function tickle() {
+        console.log("Teehee!");
+    }
 
-  return <button>Tickle me!</button>;
+    return <button>Tickle me!</button>;
 }
 ```
 
@@ -47,11 +47,11 @@ As you can see, we're passing a function _reference_, and not executing the
 
 ```jsx
 function Tickler() {
-  function tickle() {
-    console.log("Teehee!");
-  }
+    function tickle() {
+        console.log("Teehee!");
+    }
 
-  return <button onClick={tickle}>Tickle me!</button>;
+    return <button onClick={tickle}>Tickle me!</button>;
 }
 ```
 
@@ -62,7 +62,7 @@ to the event listener:
 
 ```jsx
 function Tickler() {
-  return <button onClick={() => console.log("Teehee!")}>Tickle me!</button>;
+    return <button onClick={() => console.log("Teehee!")}>Tickle me!</button>;
 }
 ```
 
@@ -78,15 +78,15 @@ DOM elements, _not_ React components. For example, this will not work:
 
 ```jsx
 function Clickable() {
-  return <button>Click Me</button>;
+    return <button>Click Me</button>;
 }
 
 function App() {
-  function handleClick() {
-    console.log("click");
-  }
+    function handleClick() {
+        console.log("click");
+    }
 
-  return <Clickable onClick={handleClick} />;
+    return <Clickable onClick={handleClick}/>;
 }
 ```
 
@@ -94,14 +94,15 @@ function App() {
 
 ```jsx
 function Clickable() {
-  function handleClick() {
-    console.log("click");
-  }
-  return <button onClick={handleClick}>Click Me</button>;
+    function handleClick() {
+        console.log("click");
+    }
+
+    return <button onClick={handleClick}>Click Me</button>;
 }
 
 function App() {
-  return <Clickable />;
+    return <Clickable/>;
 }
 ```
 
@@ -110,16 +111,16 @@ If we want to make the first example work so that `handleClick` is called in
 like so:
 
 ```jsx
-function Clickable({ onClick }) {
-  return <button onClick={onClick}>Click Me</button>;
+function Clickable({onClick}) {
+    return <button onClick={onClick}>Click Me</button>;
 }
 
 function App() {
-  function handleClick() {
-    console.log("click");
-  }
+    function handleClick() {
+        console.log("click");
+    }
 
-  return <Clickable onClick={handleClick} />;
+    return <Clickable onClick={handleClick}/>;
 }
 ```
 
@@ -147,11 +148,11 @@ Update your component to look like this:
 
 ```jsx
 function Tickler() {
-  function tickle(event) {
-    console.log(event);
-  }
+    function tickle(event) {
+        console.log(event);
+    }
 
-  return <button onClick={tickle}>Tickle me!</button>;
+    return <button onClick={tickle}>Tickle me!</button>;
 }
 ```
 
@@ -166,17 +167,17 @@ function for their `onClick` event:
 
 ```jsx
 function MultiButton() {
-  function handleClick(number) {
-    console.log(`Button ${number} was clicked`);
-  }
+    function handleClick(number) {
+        console.log(`Button ${number} was clicked`);
+    }
 
-  return (
-    <div>
-      <button onClick={handleClick}>Button 1</button>
-      <button onClick={handleClick}>Button 2</button>
-      <button onClick={handleClick}>Button 3</button>
-    </div>
-  );
+    return (
+        <div>
+            <button onClick={handleClick}>Button 1</button>
+            <button onClick={handleClick}>Button 2</button>
+            <button onClick={handleClick}>Button 3</button>
+        </div>
+    );
 }
 ```
 
@@ -188,17 +189,17 @@ We could try this:
 
 ```jsx
 function MultiButton() {
-  function handleClick(number) {
-    console.log(`Button ${number} was clicked`);
-  }
+    function handleClick(number) {
+        console.log(`Button ${number} was clicked`);
+    }
 
-  return (
-    <div>
-      <button onClick={handleClick(1)}>Button 1</button>
-      <button onClick={handleClick(2)}>Button 2</button>
-      <button onClick={handleClick(3)}>Button 3</button>
-    </div>
-  );
+    return (
+        <div>
+            <button onClick={handleClick(1)}>Button 1</button>
+            <button onClick={handleClick(2)}>Button 2</button>
+            <button onClick={handleClick(3)}>Button 3</button>
+        </div>
+    );
 }
 ```
 
@@ -209,17 +210,17 @@ Here's the solution:
 
 ```jsx
 function MultiButton() {
-  function handleClick(number) {
-    console.log(`Button ${number} was clicked`);
-  }
+    function handleClick(number) {
+        console.log(`Button ${number} was clicked`);
+    }
 
-  return (
-    <div>
-      <button onClick={() => handleClick(1)}>Button 1</button>
-      <button onClick={() => handleClick(2)}>Button 2</button>
-      <button onClick={() => handleClick(3)}>Button 3</button>
-    </div>
-  );
+    return (
+        <div>
+            <button onClick={() => handleClick(1)}>Button 1</button>
+            <button onClick={() => handleClick(2)}>Button 2</button>
+            <button onClick={() => handleClick(3)}>Button 3</button>
+        </div>
+    );
 }
 ```
 
@@ -237,26 +238,26 @@ Here's an example of using the `onChange` handler:
 
 ```jsx
 function ChangeItUp() {
-  function handleChange(event) {
-    console.log(`${event.target.name}: ${event.target.value}`);
-  }
+    function handleChange(event) {
+        console.log(`${event.target.name}: ${event.target.value}`);
+    }
 
-  return (
-    <div>
-      <input
-        type="text"
-        name="search"
-        onChange={handleChange}
-        placeholder="Enter search term..."
-      />
+    return (
+        <div>
+            <input
+                type="text"
+                name="search"
+                onChange={handleChange}
+                placeholder="Enter search term..."
+            />
 
-      <select name="filter" onChange={handleChange}>
-        <option value="all">Select a filter...</option>
-        <option value="completed">Completed</option>
-        <option value="incomplete">Incomplete</option>
-      </select>
-    </div>
-  );
+            <select name="filter" onChange={handleChange}>
+                <option value="all">Select a filter...</option>
+                <option value="completed">Completed</option>
+                <option value="incomplete">Incomplete</option>
+            </select>
+        </div>
+    );
 }
 ```
 
@@ -272,18 +273,18 @@ Here's a quick example:
 
 ```jsx
 function Login() {
-  function handleSubmit(event) {
-    event.preventDefault();
-    console.log("I submit");
-  }
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log("I submit");
+    }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="username" placeholder="Enter username..." />
-      <input type="password" name="password" placeholder="Enter password..." />
-      <button>Login</button>
-    </form>
-  );
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text" name="username" placeholder="Enter username..."/>
+            <input type="password" name="password" placeholder="Enter password..."/>
+            <button>Login</button>
+        </form>
+    );
 }
 ```
 

@@ -5,24 +5,24 @@ import ChangeItUp from "./ChangeItUp";
 import Login from "./Login";
 
 function App() {
-  return (
-    <div>
-      <h3>onClick</h3>
-      <Tickler />
-      <hr />
+    return (
+        <div>
+            <h3>onClick</h3>
+            <Tickler/>
+            <hr/>
 
-      <MultiButton />
-      <hr />
+            <MultiButton/>
+            <hr/>
 
-      <h3>onChange</h3>
-      <ChangeItUp />
-      <hr />
+            <h3>onChange</h3>
+            <ChangeItUp/>
+            <hr/>
 
-      <h3>onSubmit</h3>
-      <Login />
-      <hr />
-    </div>
-  );
+            <h3>onSubmit</h3>
+            <Login/>
+            <hr/>
+        </div>
+    );
 }
 
 export default App;
